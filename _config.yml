@@ -1,0 +1,31 @@
+title: Modern Poetry
+description: "English 4790 & 4791 - Fall 2024 - Prof. Leonardo Flores"
+baseurl: "/modern-poetry"
+url: ""
+
+markdown: kramdown
+permalink: /:slug/
+
+# Build settings
+theme: null
+plugins: []
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .gitignore
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"

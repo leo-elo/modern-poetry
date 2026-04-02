@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body{% if page.layout == 'home' %} class="home-page"{% endif %}>
+
+  <!-- Mobile hamburger -->
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Sidebar overlay for mobile -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- Sidebar navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="{{ site.baseurl }}/" class="sidebar-title">{{ site.title }}</a>
+      <p class="sidebar-subtitle">{{ site.description }}</p>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        {% for item in site.data.navigation %}
+        <li{% if page.slug == item.slug %} class="active"{% endif %}>
+          <a href="{{ site.baseurl }}/{{ item.slug }}/">
+            <span class="nav-title">{{ item.title }}</span>
+            <span class="nav-desc">{{ item.description }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+    {{ content }}
+
+    <!-- Prev/Next navigation -->
+    {% assign nav = site.data.navigation %}
+    {% assign current_index = -1 %}
+    {% for item in nav %}
+      {% if item.slug == page.slug %}
+        {% assign current_index = forloop.index0 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if current_index >= 0 %}
+    <nav class="page-nav">
+      {% assign prev_index = current_index | minus: 1 %}
+      {% assign next_index = current_index | plus: 1 %}
+      {% if prev_index >= 0 %}
+        {% assign prev = nav[prev_index] %}
+        <a href="{{ site.baseurl }}/{{ prev.slug }}/" class="page-nav-link page-nav-prev">
+          <span class="page-nav-arrow">&larr;</span>
+          <span class="page-nav-label">
+            <small>Previous</small>
+            {{ prev.title }}: {{ prev.description }}
+          </span>
+        </a>
+      {% else %}
+        <span></span>
+      {% endif %}
+
+      {% if next_index < nav.size %}
+        {% assign next = nav[next_index] %}
+        <a href="{{ site.baseurl }}/{{ next.slug }}/" class="page-nav-link page-nav-next">
+          <span class="page-nav-label">
+            <small>Next</small>
+            {{ next.title }}: {{ next.description }}
+          </span>
+          <span class="page-nav-arrow">&rarr;</span>
+        </a>
+      {% else %}
+        <span></span>
+      {% endif %}
+    </nav>
+    {% endif %}
+
+    <footer class="site-footer">
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }} | {{ site.description }}</p>
+    </footer>
+  </main>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+
+    hamburger.addEventListener('click', function() {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('open');
+      hamburger.classList.toggle('open');
+    });
+
+    overlay.addEventListener('click', function() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  </script>
+</body>
+</html>

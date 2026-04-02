@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+{% if page.banner %}
+<div class="banner" style="background-image: url('{{ site.baseurl }}/assets/{{ page.banner }}');">
+  <div class="banner-overlay">
+    <h1 class="banner-title">{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="banner-description">{{ page.description }}</p>
+    {% endif %}
+  </div>
+</div>
+{% else %}
+<div class="page-header">
+  <h1>{{ page.title }}</h1>
+  {% if page.description %}
+  <p class="page-description">{{ page.description }}</p>
+  {% endif %}
+</div>
+{% endif %}
+
+<article class="page-content">
+  {{ content }}
+</article>

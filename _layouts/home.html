@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="home-banner" style="background-image: url('{{ site.baseurl }}/assets/{{ page.banner }}');">
+  <div class="home-banner-screen"></div>
+  <div class="home-banner-content">
+    <h1 class="home-title">{{ page.title }}</h1>
+    <p class="home-subtitle">{{ page.description }}</p>
+    <div class="home-links">
+      {{ content }}
+    </div>
+  </div>
+</div>
+
+<section class="visual-path">
+  <div class="visual-path-grid">
+    {% for item in site.data.navigation %}
+    <a href="{{ site.baseurl }}/{{ item.slug }}/" class="visual-card">
+      <div class="visual-card-image" style="background-image: url('{{ site.baseurl }}/assets/{{ item.banner }}');"></div>
+      <div class="visual-card-info">
+        <h3 class="visual-card-title">{{ item.title }}</h3>
+        <p class="visual-card-desc">{{ item.description }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
