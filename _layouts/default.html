@@ -31,12 +31,16 @@
     <nav class="sidebar-nav">
       <ul>
         {% for item in site.data.navigation %}
+        {% if item.type == "header" %}
+        <li class="nav-term-header">{{ item.term }}</li>
+        {% else %}
         <li{% if page.slug == item.slug %} class="active"{% endif %}>
           <a href="{{ site.baseurl }}/{{ item.slug }}/">
             <span class="nav-title">{{ item.title }}</span>
             <span class="nav-desc">{{ item.description }}</span>
           </a>
         </li>
+        {% endif %}
         {% endfor %}
       </ul>
     </nav>
@@ -58,9 +62,12 @@
     {% if current_index >= 0 %}
     <nav class="page-nav">
       {% assign prev_index = current_index | minus: 1 %}
+      {% if prev_index >= 0 %}{% assign prev_check = nav[prev_index] %}{% if prev_check.type == "header" %}{% assign prev_index = prev_index | minus: 1 %}{% endif %}{% endif %}
       {% assign next_index = current_index | plus: 1 %}
+      {% if next_index < nav.size %}{% assign next_check = nav[next_index] %}{% if next_check.type == "header" %}{% assign next_index = next_index | plus: 1 %}{% endif %}{% endif %}
       {% if prev_index >= 0 %}
         {% assign prev = nav[prev_index] %}
+        {% if prev.type != "header" %}
         <a href="{{ site.baseurl }}/{{ prev.slug }}/" class="page-nav-link page-nav-prev">
           <span class="page-nav-arrow">&larr;</span>
           <span class="page-nav-label">
@@ -68,12 +75,14 @@
             {{ prev.title }}: {{ prev.description }}
           </span>
         </a>
+        {% else %}<span></span>{% endif %}
       {% else %}
         <span></span>
       {% endif %}
 
       {% if next_index < nav.size %}
         {% assign next = nav[next_index] %}
+        {% if next.type != "header" %}
         <a href="{{ site.baseurl }}/{{ next.slug }}/" class="page-nav-link page-nav-next">
           <span class="page-nav-label">
             <small>Next</small>
@@ -81,6 +90,7 @@
           </span>
           <span class="page-nav-arrow">&rarr;</span>
         </a>
+        {% else %}<span></span>{% endif %}
       {% else %}
         <span></span>
       {% endif %}

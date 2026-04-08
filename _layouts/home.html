@@ -1,28 +1,32 @@
 ---
 layout: default
 ---
-
-<div class="home-banner" style="background-image: url('{{ site.baseurl }}/assets/{{ page.banner }}');">
+<div class="home-banner"{% if page.banner %} style="background-image: url('{{ site.baseurl }}/assets/{{ page.banner }}');"{% endif %}>
   <div class="home-banner-screen"></div>
   <div class="home-banner-content">
     <h1 class="home-title">{{ page.title }}</h1>
-    <p class="home-subtitle">{{ page.description }}</p>
-    <div class="home-links">
-      {{ content }}
-    </div>
+    {% if page.description %}<p class="home-subtitle">{{ page.description }}</p>{% endif %}
+    {% if content and content != "" %}<div class="home-links">{{ content }}</div>{% endif %}
   </div>
 </div>
 
 <section class="visual-path">
   <div class="visual-path-grid">
     {% for item in site.data.navigation %}
-    <a href="{{ site.baseurl }}/{{ item.slug }}/" class="visual-card">
+    {% if item.type == "header" %}
+    <div class="term-divider">{{ item.term }}</div>
+    {% else %}
+    <a href="{{ site.baseurl }}/{{ item.slug }}/" class="visual-card{% unless item.banner %} visual-card--no-image{% endunless %}">
+      {% if item.banner %}
       <div class="visual-card-image" style="background-image: url('{{ site.baseurl }}/assets/{{ item.banner }}');"></div>
+      {% endif %}
       <div class="visual-card-info">
         <h3 class="visual-card-title">{{ item.title }}</h3>
-        <p class="visual-card-desc">{{ item.description }}</p>
+        {% if item.date %}<p class="visual-card-desc">{{ item.date }}</p>{% endif %}
+        {% if item.categories %}<p class="visual-card-desc">{{ item.categories | join: ", " }}</p>{% endif %}
       </div>
     </a>
+    {% endif %}
     {% endfor %}
   </div>
 </section>

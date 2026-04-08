@@ -1,94 +1,79 @@
-- slug: week-1
+- slug: "week-1"
   title: "Week 1"
   description: "Previously in Poetry..."
   banner: "media/Poeandromantics.webp"
   thumbnail: "media/Poeandromantics_thumb.webp"
-
-- slug: week-2
+- slug: "week-2"
   title: "Week 2"
   description: "Early Modernists"
   banner: "media/dickinsonwhitmanselfie.png"
   thumbnail: "media/dickinsonwhitmanselfie_thumb.png"
-
-- slug: week-3
+- slug: "week-3"
   title: "Week 3"
   description: "American Regionalism"
   banner: "media/americanregionalists.png"
   thumbnail: "media/americanregionalists_thumb.png"
-
-- slug: week-4
+- slug: "week-4"
   title: "Week 4"
   description: "Des Imagistes"
   banner: "media/hdlowell.png"
   thumbnail: "media/hdlowell_thumb.png"
-
-- slug: short-essay-modernism-in-practice
+- slug: "short-essay-modernism-in-practice"
   title: "Short Essay:"
   description: "Modernism in Practice"
   banner: "media/American Poets in Paris.png"
   thumbnail: "media/American Poets in Paris_thumb.png"
-
-- slug: week-5
+- slug: "week-5"
   title: "Week 5"
   description: "Make it New"
   banner: "media/stein and pound.png"
   thumbnail: "media/stein and pound_thumb.png"
-
-- slug: week-6
+- slug: "week-6"
   title: "Week 6"
   description: "High Modernism"
   banner: "media/prufrock.png"
   thumbnail: "media/prufrock_thumb.png"
-
-- slug: week-9
+- slug: "week-9"
   title: "Week 9"
   description: "Into The Waste Land"
   banner: "media/thewasteland.png"
   thumbnail: "media/thewasteland_thumb.png"
-
-- slug: week-10
+- slug: "week-10"
   title: "Week 10"
   description: "Capturing the American Idiom"
   banner: "media/frostmoorestevens.png"
   thumbnail: "media/frostmoorestevens_thumb.png"
-
-- slug: week-11
+- slug: "week-11"
   title: "Week 11"
   description: "The Harlem Renaissance"
   banner: "media/harlemrenaissance.png"
   thumbnail: "media/harlemrenaissance_thumb.png"
-
-- slug: research-paper
+- slug: "research-paper"
   title: "Research Paper"
   description: "Modernism in Practice"
   banner: "media/researchpaperheads.png"
   thumbnail: "media/researchpaperheads_thumb.png"
-
-- slug: week-12
+- slug: "week-12"
   title: "Week 12"
   description: "Typographical Innovation"
   banner: "media/wcwee.png"
   thumbnail: "media/wcwee_thumb.png"
-
-- slug: week-13
+- slug: "week-13"
   title: "Week 13"
   description: "Objectivist Poets and the End of Modernism"
   banner: "media/zukofskyniedecker.png"
   thumbnail: "media/zukofskyniedecker_thumb.png"
-
-- slug: week-14
+- slug: "week-14"
   title: "Week 14"
   description: "Digital Modernism"
   banner: "media/yhchi.png"
   thumbnail: "media/yhchi_thumb.png"
-
-- slug: week-15
+- slug: "week-15"
   title: "Week 15"
   description: "E-Poetry"
   banner: "media/epoets.png"
   thumbnail: "media/epoets_thumb.png"
-
-- slug: week-16
+- slug: "week-16"
   title: "Week 16"
   description: "Wrapping Up"
   banner: "media/theend.png"
